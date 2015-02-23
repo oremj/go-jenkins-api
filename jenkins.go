@@ -84,14 +84,29 @@ func (j *Api) FetchJobList() (*ApiJobListResponse, error) {
 }
 
 func (j *ApiJobListResponse) FilterByProperty(name, value string) []ApiJobs {
-	jobs := make([]ApiJobs, 0)
-	for _, job := range j.Jobs {
+	return j.FilterByPropertyFunc(func(key, val string) bool {
+		return key == name && val == value
+	})
+}
+
+// FilterByPropertyFunc takes a func(key, value) bool and returns jobs which match
+// which return true
+func (j *ApiJobListResponse) FilterByPropertyFunc(filter func(key, val string) bool) []ApiJobs {
+	filterJob := func(job ApiJobs) bool {
 		for _, prop := range job.Property {
 			for _, param := range prop.Parameters {
-				if param.Name == name && param.Defaults.Value == value {
-					jobs = append(jobs, job)
+				if filter(param.Name, param.Defaults.Value) {
+					return true
 				}
 			}
+		}
+		return false
+	}
+
+	jobs := make([]ApiJobs, 0)
+	for _, job := range j.Jobs {
+		if filterJob(job) {
+			jobs = append(jobs, job)
 		}
 	}
 	return jobs

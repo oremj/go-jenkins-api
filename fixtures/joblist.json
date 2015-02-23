@@ -1,0 +1,127 @@
+{
+  "jobs" : [
+    {
+      "name" : "TestApp-DEV",
+      "property" : [
+        {
+          
+        },
+        {
+          
+        },
+        {
+          "parameterDefinitions" : [
+            {
+              "defaultParameterValue" : {
+                "value" : "origin/master"
+              },
+              "name" : "SvcopRef"
+            },
+            {
+              "defaultParameterValue" : {
+                "value" : "refs/heads/master"
+              },
+              "name" : "PuppetGitRef"
+            }
+          ]
+        },
+        {
+          
+        }
+      ]
+    },
+    {
+      "name" : "TestApp-DEV-Deploy",
+      "property" : [
+        {
+          
+        },
+        {
+          
+        },
+        {
+          "parameterDefinitions" : [
+            {
+              "defaultParameterValue" : {
+                "value" : "origin/master"
+              },
+              "name" : "SvcopRef"
+            },
+            {
+              "defaultParameterValue" : {
+                "value" : "latest"
+              },
+              "name" : "PuppetTag"
+            },
+            {
+              "defaultParameterValue" : {
+                "value" : ""
+              },
+              "name" : "PipelineRepoDir"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name" : "TestApp-STAGE-Deploy",
+      "property" : [
+        {
+          
+        },
+        {
+          
+        },
+        {
+          "parameterDefinitions" : [
+            {
+              "defaultParameterValue" : {
+                "value" : "origin/master"
+              },
+              "name" : "SvcopRef"
+            },
+            {
+              "defaultParameterValue" : {
+                "value" : "latest"
+              },
+              "name" : "PuppetTag"
+            },
+            {
+              "defaultParameterValue" : {
+                "value" : ""
+              },
+              "name" : "PipelineRepoDir"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name" : "TestApp-STAGE-Promote",
+      "property" : [
+        {
+          
+        },
+        {
+          
+        },
+        {
+          "parameterDefinitions" : [
+            {
+              "defaultParameterValue" : {
+                "value" : "origin/dev"
+              },
+              "name" : "SvcopRef"
+            },
+            {
+              "defaultParameterValue" : {
+                "value" : ""
+              },
+              "name" : "UpstreamStackId"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
